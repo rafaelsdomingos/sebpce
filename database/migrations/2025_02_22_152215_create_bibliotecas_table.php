@@ -33,6 +33,7 @@ return new class extends Migration
             $table->date('data_modernizacao')->nullable();
             $table->boolean('orcamento_proprio')->nullable();
             $table->string('registro_sebp')->nullable();
+            $table->json('servicos_prestados')->nullable();
             $table->json('redes_sociais')->nullable();
             //Editais
             $table->json('editais')->nullable();

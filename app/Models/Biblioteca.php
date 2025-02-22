@@ -11,6 +11,12 @@ class Biblioteca extends Model
     //proteção de campos
     protected  $guarded = ['id', 'timestamps'];
 
+    //Converte automaticamente JSON e array
+    protected $casts = [
+        'redes_sociais' => 'array',
+        'servicos_prestados' => 'array',
+    ];
+
     //Relacionamentos
     public function macroregiao(): BelongsTo
     {
