@@ -32,7 +32,10 @@ return new class extends Migration
             $table->boolean('foi_modernizada')->nullable();
             $table->date('data_modernizacao')->nullable();
             $table->boolean('orcamento_proprio')->nullable();
+            $table->string('registro_sebp')->nullable();
             $table->json('redes_sociais')->nullable();
+            //Editais
+            $table->json('editais')->nullable();
             $table->timestamps();
         });
     }

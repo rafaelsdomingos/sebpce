@@ -26,15 +26,19 @@ class BibliotecaResource extends Resource
                 Forms\Components\Select::make('macroregiao_id')
                     ->label('Macroregião')
                     ->relationship('macroregiao', 'nome')
-                    ->searchable()
-                    ->required(),
+                    ->required()
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('nome')
+                            ->required(),
+                    ]),
 
                 Forms\Components\Select::make('tipo')
                     ->required()
                     ->options([
                         'comunitaria' => 'Comunitária',
                         'publica' => 'Pública',
-                    ]),
+                    ])
+                    ->reactive(),
 
                 Forms\Components\TextInput::make('nome')
                     ->required()
@@ -77,7 +81,8 @@ class BibliotecaResource extends Resource
                     ->label('Data de criação'),
 
                 Forms\Components\Toggle::make('possui_lei')
-                    ->label('Possui lei de criação?'),
+                    ->label('Possui lei de criação?')
+                    ->visible(fn ($get) => $get('tipo') === 'publica'),
 
                 Forms\Components\TextInput::make('lei_criacao')
                     ->label('Se sim, qual lei')
@@ -89,7 +94,7 @@ class BibliotecaResource extends Resource
                     ->default(null),
 
                 Forms\Components\Toggle::make('foi_implantada'),
-                
+
                 Forms\Components\DatePicker::make('data_implantacao'),
 
                 Forms\Components\Toggle::make('foi_modernizada'),
@@ -107,56 +112,19 @@ class BibliotecaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('macroregiao_id')
+                Tables\Columns\TextColumn::make('macroregiao.nome')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tipo')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nome')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('endereco')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('cep')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('municipio')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('fone')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('cidade')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('celular')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('horario_funcionamento')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('data_criacao')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('possui_lei')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('lei_criacao')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('subordinacao')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('foi_implantada')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('data_implantacao')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('foi_modernizada')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('data_modernizacao')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('orcamento_proprio')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

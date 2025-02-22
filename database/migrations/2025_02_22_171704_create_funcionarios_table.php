@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('biblioteca_id')->constrained('bibliotecas')->cascadeOnDelete();
+            $table->string('nome')->unique();
+            $table->string('funcao');
+            $table->string('escolaridade');
+            $table->string('fone')->nullable();
+            $table->string('celular')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
