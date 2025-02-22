@@ -14,10 +14,9 @@ class Espaco extends Model
 
     //Converte automaticamente JSON e array
     protected $casts = [
-        'redes_sociais' => 'array',
-        'servicos_prestados' => 'array',
+        'acessibilidade' => 'array',
     ];
-    
+
     public function biblioteca(): BelongsTo
     {
         return $this->belongsTo(Biblioteca::class);

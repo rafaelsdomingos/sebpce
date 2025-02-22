@@ -243,7 +243,7 @@ class BibliotecaResource extends Resource
         return [
 
             RelationGroup::make('Espaço Físico', [
-                RelationManagers\FuncionariosRelationManager::class,
+                RelationManagers\EspacoRelationManager::class,
             ]),
 
             RelationGroup::make('Acervo', [
