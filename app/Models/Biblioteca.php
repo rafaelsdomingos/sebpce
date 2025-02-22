@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Biblioteca extends Model
 {
@@ -26,5 +27,10 @@ class Biblioteca extends Model
     public function funcionarios(): HasMany
     {
         return $this->hasMany(Funcionario::class);
+    }
+
+    public function espaco(): HasOne
+    {
+        return $this->hasOne(Espaco::class);
     }
 }
