@@ -361,7 +361,7 @@ class BibliotecaResource extends Resource
                                     ->columnSpanFull(),
 
 
-                            ]),
+                            ])->columns(2),
                         
                         //Início Aba de equipamentos
                         Tabs\Tab::make('EQUIPAMENTOS')
@@ -463,7 +463,7 @@ class BibliotecaResource extends Resource
                                     ->label('Outros equipamentos')
                                     ->maxLength(255)
                                     ->default(null),          
-                            ]),
+                            ])->columns(3),
 
 
                         Tabs\Tab::make('SERVIÇOS')
@@ -529,22 +529,7 @@ class BibliotecaResource extends Resource
     {
         return [
 
-            RelationGroup::make('Espaço Físico', [
-                RelationManagers\EspacoRelationManager::class,
-            ]),
-
-            RelationGroup::make('Acervo', [
-                RelationManagers\FuncionariosRelationManager::class,
-            ]),
-
-            RelationGroup::make('Equipamentos', [
-                RelationManagers\FuncionariosRelationManager::class,
-            ]),
-
-            RelationGroup::make('Funcionários', [
-                RelationManagers\FuncionariosRelationManager::class,
-            ]),
-
+            RelationManagers\FuncionariosRelationManager::class,
             
         ];
     }

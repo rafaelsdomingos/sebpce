@@ -15,6 +15,12 @@ class Biblioteca extends Model
     //Converte automaticamente JSON e array
     protected $casts = [
         'redes_sociais' => 'array',
+        'acessibilidade' => 'array',
+        'acervo_acessivel' => 'array',
+        'generos_emprestados' => 'array',
+        'generos_pesquisados' => 'array',
+        'formas_aquisicao' => 'array',
+        'tipos_acervo' => 'array',
         'servicos_prestados' => 'array',
     ];
 
@@ -29,8 +35,4 @@ class Biblioteca extends Model
         return $this->hasMany(Funcionario::class);
     }
 
-    public function espaco(): HasOne
-    {
-        return $this->hasOne(Espaco::class);
-    }
 }
