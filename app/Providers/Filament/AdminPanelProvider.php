@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->brandLogo(asset('images/logo_secult.png'))
             ->brandLogoHeight('2rem')
-            ->font('Montserrat', provider: GoogleFontProvider::class)
+            ->font('Robboto', provider: GoogleFontProvider::class)
             ->brandName('SEBPCE')
             ->colors([
                 'primary' => Color::hex('#24A637'),
