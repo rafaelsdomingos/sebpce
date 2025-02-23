@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Tabs;
 use Filament\Resources\RelationManagers\RelationGroup;
+use Filament\Tables\Filters\Filter;
 
 
 
@@ -520,7 +521,10 @@ class BibliotecaResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                Filter::make('Bibliotecas Comuntarias')
+                    ->query(fn (Builder $query): Builder => $query->where('tipo', 'Comunitária')),
+                Filter::make('Bibliotecas Públicas')
+                    ->query(fn (Builder $query): Builder => $query->where('tipo', 'Pública'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
