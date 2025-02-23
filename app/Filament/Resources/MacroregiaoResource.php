@@ -17,7 +17,10 @@ class MacroregiaoResource extends Resource
 {
     protected static ?string $model = Macroregiao::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-map';
+    protected static ?string $modelLabel = 'Macroregião';
+    protected static ?string $pluralModelLabel = 'Macroregiões';
+    protected static ?string $navigationGroup = 'Cadastros';
 
     public static function form(Form $form): Form
     {

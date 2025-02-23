@@ -50,8 +50,8 @@ class BibliotecaResource extends Resource
                                 Forms\Components\Select::make('tipo')
                                     ->required()
                                     ->options([
-                                        'comunitaria' => 'Comunitária',
-                                        'publica' => 'Pública',
+                                        'Comunitária' => 'Comunitária',
+                                        'Pública' => 'Pública',
                                     ])
                                     ->columnSpan('2')
                                     ->reactive(),
@@ -84,7 +84,7 @@ class BibliotecaResource extends Resource
                                     ->default(null),
                                 Forms\Components\TextInput::make('celular')
                                     ->label('Celular / Whatsapp')
-                                    ->mask('(99) 9999-9999')
+                                    ->mask('(99) 99999-9999')
                                     ->maxLength(255)
                                     ->default(null),
             
@@ -105,7 +105,7 @@ class BibliotecaResource extends Resource
                 
                                 Forms\Components\Select::make('subordinacao')
                                     ->label('Subordinação')
-                                    ->options(fn (callable $get) => $get('tipo') === 'publica' 
+                                    ->options(fn (callable $get) => $get('tipo') === 'Pública' 
                                         ? [
                                             'Secretaria de Cultura' => 'Secretaria de Cultura',
                                             'Secretaria de Educação' => 'Secretaria de Educação',
@@ -123,58 +123,58 @@ class BibliotecaResource extends Resource
                                     ->default(null),
                                 
 
-                                //Campos visíveis quando biblioteca for do tipo publica
+                                //Campos visíveis quando biblioteca for do tipo pública
                                 Forms\Components\Toggle::make('possui_lei')
                                     ->label('Possui lei de criação?')
                                     ->columnSpan('2')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
 
                                 Forms\Components\Toggle::make('foi_implantada')
                                     ->columnSpan('2')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
                 
                                 Forms\Components\TextInput::make('lei_criacao')
                                     ->label('Se sim, informe a lei e o ano de criação')
                                     ->columnSpan('2')
                                     ->maxLength(255)
-                                    ->visible(fn ($get) => $get('tipo') === 'publica')
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública')
                                     ->default(null),
 
                                 //Campos visíveis quando biblioteca for do tipo comunitária
                                 Forms\Components\TextInput::make('registro_sebp')
                                     ->label('Registro SEBP')
                                     ->maxLength(255)
-                                    ->visible(fn ($get) => $get('tipo') === 'comunitaria')
+                                    ->visible(fn ($get) => $get('tipo') === 'Comunitária')
                                     ->default(null),
             
-            
+                                //Campos visíveis quando biblioteca for do tipo pública
                                 Forms\Components\DatePicker::make('data_implantacao')
                                     ->columnSpan('2')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
                 
                                 Forms\Components\Toggle::make('foi_modernizada')
                                     ->columnSpan('2')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
 
                                 Forms\Components\Toggle::make('orcamento_proprio')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
                 
                                 Forms\Components\DatePicker::make('data_modernizacao')
                                     ->columnSpan('2')
-                                    ->visible(fn ($get) => $get('tipo') === 'publica'),
+                                    ->visible(fn ($get) => $get('tipo') === 'Pública'),
                                        
                                 Fieldset::make('REDES SOCIAIS')
                                     ->schema([
                                         Forms\Components\CheckboxList::make('redes_sociais')
                                             ->label('')
                                             ->options([
-                                                'facebook' => 'Facebook',
-                                                'instagram' => 'Instagram',
-                                                'youtube' => 'Youtube',
-                                                'mc_nacional' => 'Mapa Cultural Nacional',
-                                                'mc_estadual' => 'Mapa Cultural Estadual',
-                                                'mc_municipal' => 'Mapa Cultural Municipal',
-                                                'outros' => 'Outros',
+                                                'Facebook' => 'Facebook',
+                                                'Instagram' => 'Instagram',
+                                                'Youtube' => 'Youtube',
+                                                'Mapa Cultural Nacional' => 'Mapa Cultural Nacional',
+                                                'Mapa Cultural Estadual' => 'Mapa Cultural Estadual',
+                                                'Mapa Cultural Municipal' => 'Mapa Cultural Municipal',
+                                                'Outros' => 'Outros',
                                             ])
                                             ->columns(2)
                                             ->columnSpanFull(),
@@ -192,27 +192,27 @@ class BibliotecaResource extends Resource
                                 Forms\Components\Select::make('predio')
                                     ->label('Prédio')
                                     ->options([
-                                        'proprio' => 'Próprio',
-                                        'alugado' => 'Alugado',
-                                        'cedido' => 'Cedido',
+                                        'Próprio' => 'Próprio',
+                                        'Alugado' => 'Alugado',
+                                        'Cedido' => 'Cedido',
                                     ])
                                     ->default(null),
                                 Forms\Components\Select::make('situacao_fisica')
                                     ->label('Situação física')
                                     ->options([
-                                        'otima' => 'Ótima',
-                                        'boa' => 'Boa',
-                                        'regular' => 'Regular',
-                                        'insatisfatoria' => 'Insatisfatória',
+                                        'Ótima' => 'Ótima',
+                                        'Boa' => 'Boa',
+                                        'Regular' => 'Regular',
+                                        'Insatisfatória' => 'Insatisfatória',
                                     ])
                                     ->default(null),
                                 Forms\Components\CheckboxList::make('acessibilidade')
                                     ->options([
-                                        'rampa' => 'Rampa',
-                                        'piso_tatil' => 'Piso Tátil',
-                                        'banheiro_acessivel' => 'Banheiro Acessível',
-                                        'elevador' => 'Elevador',
-                                        'nenhuma' => 'Nenhuma',
+                                        'Rampa' => 'Rampa',
+                                        'Piso Tátil' => 'Piso Tátil',
+                                        'Banheiro Acessível' => 'Banheiro Acessível',
+                                        'Elevador' => 'Elevador',
+                                        'Nenhuma' => 'Nenhuma',
                                     ])
                                     ->columnSpanFull(),
                                 
@@ -283,21 +283,21 @@ class BibliotecaResource extends Resource
                                 Forms\Components\Select::make('software')
                                     ->label('Se sim, qual o software utilizado?')
                                     ->options([
-                                        'biblivre' => 'Biblivre',
-                                        'koha' => 'Koha',
-                                        'gnuteca' => 'Gnuteca',
-                                        'outros' => 'Outros',
+                                        'Biblivre' => 'Biblivre',
+                                        'Koha' => 'Koha',
+                                        'Gnuteca' => 'Gnuteca',
+                                        'Outros' => 'Outros',
                                     ])
                                     ->default(null),
 
                                 Forms\Components\CheckboxList::make('acervo_acessivel')
                                     ->label('Acervo acessível:')
                                     ->options([
-                                        'livro_braile' => 'Livro em braile',
-                                        'fonte_ampliada' => 'Fonte amplificada',
-                                        'livro_digital' => 'Livro digital',
-                                        'audiolivro' => 'Audiolivro',
-                                        'nenhuma' => 'Nenhuma das alternativas',
+                                        'Livro em braile' => 'Livro em braile',
+                                        'Fonte amplificada' => 'Fonte amplificada',
+                                        'Livro digital' => 'Livro digital',
+                                        'Audiolivro' => 'Audiolivro',
+                                        'Sem acervo acessível' => 'Sem acervo acessível',
                                     ])
                                     ->columnSpanFull(),
 
@@ -314,11 +314,11 @@ class BibliotecaResource extends Resource
                                 Forms\Components\CheckboxList::make('generos_emprestados')
                                     ->label('Gêneros mais emprestados:')
                                     ->options([
-                                        'literatura_geral' => 'Literatura Geral',
-                                        'literatura_infantil' => 'Literatura Infantil / Infantojuvenil',
-                                        'didaticos' => 'Didáticos',
-                                        'quadrinhos' => 'Quadrinhos / HQ / Mangá',
-                                        'outros' => 'Outros',
+                                        'Literatura Geral' => 'Literatura Geral',
+                                        'Literatura Infantil/Infantojuvenil' => 'Literatura Infantil/Infantojuvenil',
+                                        'Didáticos' => 'Didáticos',
+                                        'Quadrinhos/HQ/Mangá' => 'Quadrinhos/HQ/Mangá',
+                                        'Outros' => 'Outros',
                                     ])
                                     ->columnSpanFull(),
 
@@ -328,35 +328,35 @@ class BibliotecaResource extends Resource
 
                                 Forms\Components\CheckboxList::make('generos_pesquisados')
                                     ->options([
-                                        'literatura_geral' => 'Literatura Geral',
-                                        'literatura_infantil' => 'Literatura Infantil / Infantojuvenil',
-                                        'didaticos' => 'Didáticos',
-                                        'quadrinhos' => 'Quadrinhos / HQ / Mangá',
-                                        'outros' => 'Outros',
+                                        'Literatura Geral' => 'Literatura Geral',
+                                        'Literatura Infantil/Infantojuvenil' => 'Literatura Infantil/Infantojuvenil',
+                                        'Didáticos' => 'Didáticos',
+                                        'Quadrinhos/HQ/Mangá' => 'Quadrinhos/HQ/Mangá',
+                                        'Outros' => 'Outros',
                                     ])
                                     ->columnSpanFull(),
 
                                 Forms\Components\CheckboxList::make('formas_aquisicao')
                                     ->options([
-                                        'compra' => 'Compra',
-                                        'doacao' => 'Doação',
-                                        'permuta' => 'Permuta',
+                                        'Compra' => 'Compra',
+                                        'Doação' => 'Doação',
+                                        'Permuta' => 'Permuta',
                                     ])
                                     ->columnSpanFull(),
 
                                 Forms\Components\CheckboxList::make('tipos_acervo')
                                     ->options([
-                                        'livros' => 'Livros',
-                                        'revistas' => 'Revistas',
-                                        'jornais' => 'Jornais',
-                                        'quadrinhos' => 'Revistas em quadrinhos',
-                                        'cd' => 'CD',
-                                        'dvd' => 'DVD',
-                                        'folhetos' => 'Folhetos',
-                                        'fotografias' => 'Fotografias',
-                                        'mapas' => 'Mapas',
-                                        'cordel' => 'Cordel',
-                                        'outros' => 'Outros',
+                                        'Livros' => 'Livros',
+                                        'Revistas' => 'Revistas',
+                                        'Jornais' => 'Jornais',
+                                        'Revistas em quadrinhos' => 'Revistas em quadrinhos',
+                                        'CD' => 'CD',
+                                        'DVD' => 'DVD',
+                                        'Folhetos' => 'Folhetos',
+                                        'Fotografias' => 'Fotografias',
+                                        'Mapas' => 'Mapas',
+                                        'Cordel' => 'Cordel',
+                                        'Outros' => 'Outros',
                                     ])
                                     ->columnSpanFull(),
 
@@ -498,19 +498,26 @@ class BibliotecaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('macroregiao.nome')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('tipo')
-                    ->sortable()
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable()
                     ->sortable(),
+                
+                Tables\Columns\TextColumn::make('tipo')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Comunitária' => 'info',
+                        'Pública' => 'success',
+                    })
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('macroregiao.nome')
+                    ->numeric()
+                    ->sortable(),
+                
                 Tables\Columns\TextColumn::make('cidade')
-                    ->searchable(),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('celular')
-                    ->searchable(),
+                    ->sortable(),
             ])
             ->filters([
                 //
