@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bibliotecas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('macroregiao_id')->constrained('macroregiaos')->cascadeOnDelete();
+            $table->foreignId('macroregiao_id')->constrained('macroregiaos')->cascadeOnUpdate()->restrictedOnDelete();
             $table->string('tipo');
             $table->string('nome');
             $table->string('endereco')->nullable();

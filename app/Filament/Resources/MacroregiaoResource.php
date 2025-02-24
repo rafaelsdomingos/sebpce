@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Notifications\Notification;
+
 
 class MacroregiaoResource extends Resource
 {
@@ -52,7 +54,25 @@ class MacroregiaoResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->action(function ($record) {
+                        if ($record->bibliotecas()->count() > 0) {
+                            Notification::make()
+                                ->title('Erro ao excluir')
+                                ->body('Não é possível excluir esta macroregião porque existem bibliotecas cadastradas.')
+                                ->danger()
+                                ->send();
+
+                            return;
+                        }
+
+                        Notification::make()
+                            ->success()
+                            ->title('Excluído')
+                            ->send();
+
+                        $record->delete();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
