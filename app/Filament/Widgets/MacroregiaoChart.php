@@ -20,7 +20,7 @@ class MacroregiaoChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Comunitárias',
+                    'label' => 'Bibliotecas Comunitárias',
                     'data' => [
                         Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 1)->count(),
                         Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 2)->count(),
@@ -39,7 +39,7 @@ class MacroregiaoChart extends ChartWidget
                     'borderColor' => '#136EFF',
                 ],
                 [
-                    'label' => 'Públicas',
+                    'label' => 'Bibliotecas Públicas',
                     'data' => [
                         Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 1)->count(),
                         Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 2)->count(),
