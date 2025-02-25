@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Adiciona ip do proxy reverso
+        $middleware->trustProxies(at: [
+            '172.21.4.2',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
