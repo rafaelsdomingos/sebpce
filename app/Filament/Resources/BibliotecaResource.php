@@ -147,6 +147,24 @@ class BibliotecaResource extends Resource
                                     ->maxLength(255)
                                     ->visible(fn ($get) => $get('tipo') === 'Comunitária')
                                     ->default(null),
+                                
+                                Fieldset::make('EDITAIS')
+                                ->schema([
+                                    Forms\Components\CheckboxList::make('editais')
+                                        ->label('')
+                                        ->options([
+                                            'Edital Aldir Blanc' => 'Edital Aldir Blanc',
+                                            'Edital Vozes Plurais' => 'Edital Vozes Plurais',
+                                            'Edital Bibliotecas Comunitárias e Populares do Ceará' => 'Edital Bibliotecas Comunitárias e Populares do Ceará',
+                                            'Edital Prêmio Pontos de Leitura 2023' => 'Edital Prêmio Pontos de Leitura 2023',
+                                            'Nenhum' => 'Nenhum',
+                                        ])
+                                        ->columns(2)
+                                        ->columnSpanFull(),
+                                ])->columnSpan(4)
+                                ->visible(fn ($get) => $get('tipo') === 'Comunitária'),
+
+                                
             
                                 //Campos visíveis quando biblioteca for do tipo pública
                                 Forms\Components\DatePicker::make('data_implantacao')

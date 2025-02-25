@@ -17,6 +17,7 @@ class Biblioteca extends Model
         'redes_sociais' => 'array',
         'acessibilidade' => 'array',
         'acervo_acessivel' => 'array',
+        'editais' => 'array',
         'generos_emprestados' => 'array',
         'generos_pesquisados' => 'array',
         'formas_aquisicao' => 'array',
