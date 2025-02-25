@@ -34,6 +34,8 @@ class MacroregiaoChart extends ChartWidget
                         Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 10)->count(),
                         Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 11)->count(),
                         Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 12)->count(),
+                        Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 13)->count(),
+                        Biblioteca::where('tipo', "Comunitária")->where('macroregiao_id', 14)->count(),
                     ],
                     'backgroundColor' => '#BEDAFF',
                     'borderColor' => '#136EFF',
@@ -53,6 +55,8 @@ class MacroregiaoChart extends ChartWidget
                         Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 10)->count(),
                         Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 11)->count(),
                         Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 12)->count(),
+                        Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 13)->count(),
+                        Biblioteca::where('tipo', 'Pública')->where('macroregiao_id', 14)->count(),
                     ],
                     'backgroundColor' => '#C7F6D0',
                     'borderColor' => '#04B31E',
@@ -71,6 +75,8 @@ class MacroregiaoChart extends ChartWidget
                 Macroregiao::where('id', 10)->value('nome'), 
                 Macroregiao::where('id', 11)->value('nome'), 
                 Macroregiao::where('id', 12)->value('nome'),
+                Macroregiao::where('id', 13)->value('nome'),
+                Macroregiao::where('id', 14)->value('nome'),
             
             ],
         ];

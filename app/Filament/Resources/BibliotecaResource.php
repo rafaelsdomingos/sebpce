@@ -530,7 +530,8 @@ class BibliotecaResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('macroregiao.nome')
-                    ->numeric()
+                    //->numeric()
+                    ->searchable()
                     ->sortable(),
                 
                 Tables\Columns\TextColumn::make('cidade')
