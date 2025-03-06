@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->brandLogo(asset('images/logo_sebp.png'))
             ->darkModeBrandLogo('images/logo_sebp_dark.png')
-            ->brandLogoHeight('3.5rem')
+            ->brandLogoHeight('3rem')
             ->font('Robboto', provider: GoogleFontProvider::class)
             ->brandName('SEBPCE')
             ->colors([
