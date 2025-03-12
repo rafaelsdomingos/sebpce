@@ -569,6 +569,7 @@ class BibliotecaResource extends Resource
         return [
             'index' => Pages\ListBibliotecas::route('/'),
             'create' => Pages\CreateBiblioteca::route('/create'),
+            'view' => Pages\ViewBiblioteca::route('/{record}'),
             'edit' => Pages\EditBiblioteca::route('/{record}/edit'),
         ];
     }
